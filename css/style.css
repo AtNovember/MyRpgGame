@@ -1,0 +1,321 @@
+/*@import url(http://fonts.googleapis.com/css?family=Lora&subset=latin,cyrillic);*/
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,cyrillic);*/
+
+* {
+    margin:0;
+    padding:0;
+}
+
+/* ---- Floaty BackGround----*/
+body, html {
+    min-height: 100%;
+    max-width: 100%;
+   /* font-family: 'Lora', serif;*/
+    font-family: 'EB Garamond', serif;
+    font-size: large;
+
+}
+
+body {
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: bold;
+}
+
+.content {
+    /*border: solid;*/
+    border-color: rgba(200, 102, 052, 0.9);
+}
+
+/*---HEADER---*/
+
+.page-header {
+    background-color: rgba(255,255,255, 0.3);
+}
+
+.page-header > h2 {
+    text-align: center;
+}
+
+
+.page-header > h2:before {
+    content: url("../img/ornament-left.png");
+    width:200px;
+}
+
+.page-header > h2:after {
+    content: url("../img/ornament-right.png");
+    width:200px;
+}
+
+
+/* ---- content tabs ------*/
+
+ul.nav-tabs {
+    margin-left: 20%;
+}
+
+.nav-tabs > li.active > a,
+/*.nav-tabs > li.active > a:hover,*/
+.nav-tabs > li.active > a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---MAIN CONTENT---*/
+.content {
+    background-color: rgba(255,255,255, 0.2);
+    border-radius: 5px;
+    border-color: rgba(0,0,0, 1);
+}
+
+.col-md-4 {
+    padding-left: 3%;
+}
+
+.user, .skill {
+    background-image: url("../img/avatar.jpg");
+    background-size: contain;
+  /*  background-repeat: no-repeat;*/
+    height: 385px;
+    width: 260px;
+    margin-top: 8%;
+    margin-bottom: 4%;
+    position:relative;
+}
+
+p.nickname, p.skill-name {
+    z-index: 1;
+    position: relative;
+    /*color: #33000;*/
+    font-weight: 700;
+    font-size: 1.8em;
+    text-align: center;
+    padding-top: 0.2em;
+
+}
+
+.user-skill-number {
+   position: absolute;
+    /*margin-top: 100px;*/
+    bottom: 3em;
+    left: 2em;
+}
+
+div.user-progress > p{
+    list-style-type: none;
+    width: 260px;
+}
+
+.user-skills {
+    margin-top: 8%;
+    margin-bottom: 4%;
+}
+
+.user-skills > img {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.user-feed > h3 {
+    text-align: center;
+    border-bottom:  solid black 1px;
+    padding-bottom: 0.5em;
+    width: 90%;
+}
+
+.col-md-10 {
+    margin-left: 20%;
+}
+
+/*------ task page ------*/
+
+.task-control-panel {
+    display: inline-block;
+    width: 100%;
+    padding: 1em;
+}
+
+.task-control-panel > div {
+    margin: 1em;
+    padding: 1em;
+}
+
+.task-control-panel input {
+    border-radius: 5px;
+}
+
+.task-control-panel > .pull-right > i {
+    margin: 1em;
+}
+
+.task-control-panel > .task {
+    display: inline-block;
+    float: left;
+    height: 3em;
+}
+
+.task-panel {
+    list-style-type: none;
+    text-indent: hanging;
+    padding: 2.2em;
+}
+
+.task-panel > form > li {
+    background-color: rgba(150, 200, 70, .3);
+    padding: 0.2em;
+    margin: 0.2em;
+    border: solid #68533a 1px;
+    border-radius: 5px;
+}
+
+.task-panel> form > li > input[type="checkbox"] {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 5px;
+}
+
+.task-panel > li > label {
+   vertical-align: text-bottom;
+
+}
+
+.task {
+    cursor: pointer;
+}
+
+
+/* ----- registration form ---*/
+
+.form-group {
+    background-color: rgba(255,255,255, 0.3);
+    width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    padding: 1.2em;
+    border-radius: 5%;
+}
+
+.form-group > form {
+   /* width: 95%;*/
+}
+
+.form-group > form > label {
+    font-size: 2em;
+    width: 6em;
+}
+.form-group > form > .input-group {
+    margin: 0.5em;
+}
+
+.form-group > form > .input-group > input[type=text],
+.form-group > form > .input-group > input[type=password],
+.form-group > form > .input-group > input[type=email]{
+    height: 3em;
+    width: 12em;
+    background-color: rgba(255,255,255, 0.3);
+    padding-left: 1em;
+    border-radius: 5px;
+}
+
+.form-group > form > button {
+    margin-right: 15%;
+    margin-left: 15%;
+    height: 3em;
+    width: 12em;
+    /*background-color: rgba(255,255,255, 0.3);*/
+}
+
+
+
+
+/* Дальше пошли мои извращения с прокруткой картинок скиллов */
+
+.user-skills {
+    display: inline-block;
+}
+/*
+.thumb {
+    position:relative;
+    background: url("http://upload.wikimedia.org/wikipedia/commons/6/68/Solid_black.png");
+   height: 180px;
+    width: 120px;
+    float: left;
+    overflow: hidden;
+    border: 1px solid #eee;*/
+    /*box-shadow: 0 5px 10px;*/
+  /*  margin: 12px;
+    display:none;
+}*/
+/*
+.thumb > .content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 30px;
+    color: #EEEEEE;
+}
+
+.thumb > .content > h2 {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #eee;
+}
+
+
+.thumb > .content > p {
+    text-align: center;
+}
+
+.wrapper {
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    height: 190px;
+    width: 190px;
+}
+
+.wrapper img {
+    height: 190px;
+    width: 190px;
+}*/
+
+.col-md-8{
+    padding-top: 2em;
+    padding-right: 5em;
+}
+
+.slick-slide > img {
+    width: 5em;
+}
+
+.slick-active > img {
+    width: 6em;
+}
+
+.slick-center > img {
+    width: 8em;
+}
+
+.slider .center > div > a.skill-name {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0px;
+}
+
+
+
+/*--- FOOOTER---*/
+
+.footer {
+   /* padding-bottom: 2.6em;*/
+   // position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer > .container > ul.nav {
+    margin-left: 20%;
+}

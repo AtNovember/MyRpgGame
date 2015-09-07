@@ -1,0 +1,2 @@
+INSERT INTO users (email, pass, join_date) VALUES ('girl-tlt@mail.rutr', md5(11111), NOW()) 
+jhgjhhgh
