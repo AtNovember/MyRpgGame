@@ -1,2 +1,8 @@
 INSERT INTO users (email, pass, join_date) VALUES ('girl-tlt@mail.rutr', md5(11111), NOW()) 
 jhgjhhgh
+INSERT INTO users (email, pass, join_date) VALUES ('suvorov63ru@yandex.ru', md5(st3or6m9), NOW()) 
+<p> Ваша учетная запись успешно создана. Вы можете войти в приложение и
+                            <a href='editprofile.php'>отредактировать свой профиль</a>.</p>
+INSERT INTO users (email, pass, join_date) VALUES ('suvorov63ru@yandex.ru', md5(05031993), NOW()) 
+<p> Ваша учетная запись успешно создана. Вы можете войти в приложение и
+                            <a href='editprofile.php'>отредактировать свой профиль</a>.</p>

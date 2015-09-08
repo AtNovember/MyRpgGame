@@ -6,8 +6,8 @@
  * Time: 7:35
  */
     //описание страницы для поисковых роботов
-    $title = "This is YOUR TASK page of our RPG Game";
-    $keywords = "";
+    $title = "This is YOUR QUEST page of our RPG Game";
+    $keywords = "RPG, quest, skill,";
     $content = "";
     $description = "";
 
@@ -20,11 +20,6 @@
 
 <div class="container">
 
-   <!-- <ul class="nav nav-tabs">
-      <li role="presentation"><a href="profile.php">Профиль</a></li>
-      <li role="presentation" class="active"><a href="task.php">Задачи</a></li>
-      <li role="presentation"><a href="editprofile.php">Редактировать профиль</a></li>
-    </ul> -->
 
     <div class="content container-fluid">
 
@@ -38,10 +33,10 @@
         </div>
             <div class="panel-collapse collapse out">
                  <div class="panel-body">
-                     <h2>Добавить новую задачу</h2>
+                     <h2>Добавить новый квест</h2>
 
                     <form name="add-task" method="post" action="">
-                        <label for="task-description">Опишите задание (Максимум 140 символов)</label><br/>
+                        <label for="task-description">Опишите квест (Максимум 140 символов)</label><br/>
                         <textarea name="task-description" value="" maxlength="140"></textarea> <br>
 
                         <label name="task-difficult">выбрать сложность (от 1 до 3)</label>
@@ -63,7 +58,7 @@
                                 <?php
                                     $queryGetSkills = "SELECT mapping.skill_id AS skill_id, skills.skill_name AS skill_name ".
                                         " FROM mapping, skills ".
-                                        " WHERE user_id ='1' AND mapping.skill_id = skills.skill_id ".
+                                        " WHERE user_id ='". $_SESSION['user_id'] ."' AND mapping.skill_id = skills.skill_id ".
                                         "GROUP BY skills.skill_name";
                                     $dataSkills = mysqli_query($dbc, $queryGetSkills);
 
@@ -74,7 +69,7 @@
                                 ?>
                             </select><br>
 
-                        <button type="submit" name="add-task">Добавить задание</button>
+                        <button type="submit" name="add-task">Добавить Квест</button>
 
                     </form>
                  </div>
@@ -91,26 +86,21 @@ if (isset ($_POST['add-task'])) {
     $task_skill = $_POST['task-skill'];
 
     if(empty($task_description) || $task_description == ""  || $task_description == NULL ) { /*проверяем есть ли у нас текст задания*/
-        echo "вы не ввели текст задания";
+        echo "<script> alert ('вы не ввели текст задания!'); </script>";
     } else {
-        echo $task_description;
+       // echo $task_description;
+        echo "<script> alert ('квест добавлен!'); </script>";
     }
 
 $query = "INSERT INTO tasks( task_desciption, task_status, task_importance, task_difficult, exp_id, user_id )".
-"VALUES ('$task_description',  '0',  '$task_importance',  '$task_difficult',  '$task_skill',  '1')";
-/*"SELECT task_desciption, task_status, task_importance, task_difficult, exp_id, user_id
-" FROM tasks";
- WHERE NOT EXISTS(SELECT 1 FROM tasks WHERE task_desciption = :task_desciption)";*/
-//echo  $query;
-//  "VALUES (NULL, $task_description,$task_importance,$task_difficult,$task_skill, '" . $_SESSION['user_id'] . "')";
+"VALUES ('$task_description',  '0',  '$task_importance',  '$task_difficult',  '$task_skill',  '". $_SESSION['user_id'] ."')";
 
     mysqli_query($dbc, $query);
 
 }
 
 
-// $query2 = "SELECT * FROM 'tasks' WHERE user_id='". $_SESSION['user_id'] ."'";
-$query2 = "SELECT * FROM tasks WHERE user_id='1' ORDER BY task_date DESC ";
+$query2 = "SELECT * FROM tasks WHERE user_id='". $_SESSION['user_id'] ."' ORDER BY task_date DESC ";
 
 $data2 = mysqli_query($dbc, $query2);
 $num_task = mysqli_num_rows($data2);
@@ -173,7 +163,7 @@ $num_task = mysqli_num_rows($data2);
                 mysqli_query($dbc, $queryTask);
             }
     } else {
-        echo " OH, NO!! You didn`t choose any task! ";
+        echo " Вы не выбрали ни одного задания! ";
     }
 
 	
@@ -209,11 +199,10 @@ $num_task = mysqli_num_rows($data2);
     }
 
 ?>
-           <li><input type="checkbox"> <label>blablabla</label> <span class="pull-right">date <i class="glyphicon glyphicon-exclamation-sign"></i></span></li>
+        <!--   <li><input type="checkbox"> <label>blablabla</label> <span class="pull-right">date <i class="glyphicon glyphicon-exclamation-sign"></i></span></li>-->
 
     </div>
 
-        <div class="col-md-10"><img src="img/ornament.png"></div>
     </div> <!-- END OF WHITE CONTAINER -->
 
 </div> <!--END OF CLASS=COnTAINER-->

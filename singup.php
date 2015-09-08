@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>RPG Yourself</title>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Инесса
+ * Date: 17.05.2015
+ * Time: 7:35
+ */
+    //описание страницы для поисковых роботов
+    $title = "This is YOUR TASK page of our RPG Game";
+    $keywords = "";
+    $content = "";
+    $description = "";
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    //подключаем header.php, куда через переменные вставляем наши СЕО-данные:
+    require_once('header.php');
+    include('connect.php');
 
-    <script src="js/jquery-1.11.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
-</head>
-<body>
-<div class="page-header">
-    <H2>Logo</H2>
 
-</div>
+?>
 
 
 <div class="container">
@@ -106,16 +107,12 @@
 
       </ul> -->
 
-      <div class="pull-left">
-          <p class="navbar-text navbar-fixed-bottom">2015 &copy All Rights Reserved</p>
-      </div>
+
   </div>
 
 
 </div>
 
-
-
-
-</body>
-</html>
+<?php
+    require_once('footer.php');
+?>

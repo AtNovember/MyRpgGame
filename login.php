@@ -58,6 +58,7 @@
 ?>
 
 <div class="container">
+    <div class="content">
         <?php
             // Если куки пустые, то вывести сообщение об ошибке
             if (empty($_COOKIE['user_id'])) {
@@ -88,6 +89,7 @@
                 echo ('<p class="login"> Вы вошли как ' . $_COOKIE['email']. '</p>');
             }
         ?>
+    </div>
 </div> <!--END OF CLASS=COMTAINER-->
 
 <?php

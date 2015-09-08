@@ -16,7 +16,7 @@
              "INNER JOIN experience  USING (exp_id) ".
              "INNER JOIN skills USING (skill_id) ".
             //"WHERE mapping.user_id = '" . $_SESSION['user_id']. "'";
-             "WHERE mapping.user_id = '1' AND mapping.skill_id='". $_GET['skill_id']."'";
+             "WHERE mapping.user_id = '". $_SESSION['user_id'] ."' AND mapping.skill_id='". $_GET['skill_id']."'";
 
     $data = mysqli_query($dbc,$query);
 
@@ -34,13 +34,13 @@
         $sum_xp += $val;
     }
 
-$skill_level = floor(2+log(($sum_xp/100), 2));
+$skill_level = 2+log(($sum_xp/100), 2);
 
 /* ------- ПОЛУЧАЕМ ДАННЫЕ ДЛЯ ОТОБРАЖЕНИЯ ЗАДАНИЙ И РАСЧЕТА ВЫПОЛНЕННЫХ ЗАДАЧ -----*/
 
     $query2 = "SELECT tasks.task_id AS task_id, tasks.task_desciption AS task_desciption, tasks.task_status AS task_status, tasks.task_date AS task_date, tasks.exp_id AS exp_id, ".
             " mapping.skill_id AS skill_id".
-            " FROM tasks, mapping  WHERE tasks.user_id='1' AND tasks.exp_id=mapping.exp_id  AND mapping.skill_id='".$_GET['skill_id']."' ".
+            " FROM tasks, mapping  WHERE tasks.user_id='". $_SESSION['user_id'] ."' AND tasks.exp_id=mapping.exp_id  AND mapping.skill_id='".$_GET['skill_id']."' ".
             " ORDER BY task_status AND task_date DESC ";
 
     $data2 = mysqli_query($dbc, $query2);
@@ -73,17 +73,23 @@ while ($row2 = mysqli_fetch_array($data2)) {
 
     <div class="content container-fluid">
         <div class="col-md-4">
-            <div class="skill" style="background-image: url('img/skills/<?php echo $skill_picture; ?>')">
+            <h2 class="skill-name"><?php echo $skill_name; ?> </h2>
+           <!-- <div class="skill" style="background-image: url('img/skills/<?php //echo $skill_picture; ?>')">-->
+            <img class="skill" src="img/skills/<?php echo $skill_picture; ?>">
 
-                <p class="skill-name"><?php echo $skill_name; ?> </p>
-                <p class="user-skill-number"><?php echo "your skill lvl: ". $skill_level; ?></p>
+
                 <!--<img class="user-skill-number" src="img/level.jpg">-->
 
-            </div>
+            <!--</div>-->
+            <p class="user-skill-number"><?php echo "Ваш текущий уровень: ". floor($skill_level); ?></p>
+
+            <?php  echo "<div id='progressbar' class='ui-progressbar'>".$k = ($skill_level - floor($skill_level))*100 ."<div id='progress-label' class='progress-label'>".$skill_name." = ". $val ."</div></div>"; ?>
+
             <div class="user-progress">
-                <p>Набрано опыта <span class="badge pull-right"><?php echo $sum_xp; ?></span></p>
-                <p>Выполнено задач <span class="badge pull-right"><?php echo $num_task_completed; ?></span></p>
-                <p>Потрачено времени, ч <span class="badge pull-right">25</span></p>
+
+                <p>Набрано опыта <span class=" pull-right"><?php echo $sum_xp; ?></span></p>
+                <p>Выполнено задач <span class=" pull-right"><?php echo $num_task_completed; ?></span></p>
+
             </div>
 
 
@@ -93,32 +99,13 @@ while ($row2 = mysqli_fetch_array($data2)) {
             <div class="user-experience" id="vertical-carousel">
                 <i class="glyphicon glyphicon-triangle-top" id="up"></i>
 
-                <style>
-                  .ui-progressbar {
-                    position: relative;
-                  }
-                  .progress-label {
-                    position: absolute;
-                    left: 50%;
-                    top: 4px;
-                    font-weight: bold;
-                    text-shadow: 1px 1px 0 #fff;
-                  }
-                  </style>
-
-                <script>
-                /*        $(function() {
-                          $('.ui-progressbar').each(function() {
-                                var value = parseInt($(this).text());
-                                $(this).empty().progressbar({value: value});
-                          });
-                       });*/
-                </script>
 
                 <?php foreach ($xp as $skill_name => $val) {
+
                             echo $skill_name ." = ". $val;
-                            echo "<i class='glyphicon glyphicon-plus pull-right' id='xp-plus'></i> ";
-                            echo "<div id='progressbar' class='ui-progressbar'>".$k = ($val/10) ."<div id='progress-label' class='progress-label'>".$skill_name." = ". $val ."</div></div>";
+                           // echo "<i class='glyphicon glyphicon-plus pull-right' id='xp-plus'> </i> ";
+                            echo "<div id='progressbar' class='ui-progressbar'>".$k = ($val % 100) ."<div id=\"progress-label\" class=\"progress-label\">". $skill_name ." = ". $val ."</div></div>";
+
                 } ?>
 
                 <i class="glyphicon glyphicon-triangle-bottom" id="down"></i>
@@ -208,12 +195,11 @@ return false;
 ?>
 
 
-
         </div> <!-- END OF RIGHT SIDE -->
-        <div class="col-md-10"><img src="img/ornament.png"></div>
+       <!-- <div class="col-md-10"><img src="img/ornament.png"></div>-->
     </div> <!-- END OF WHITE CONTAINER -->
 
-</div> <!--END OF CLASS=COMTAINER-->
+</div> <!--END OF CLASS=CONTAINER-->
 
 <?php
     require_once('footer.php');

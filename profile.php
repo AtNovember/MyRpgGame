@@ -19,7 +19,7 @@
            "FROM mapping, experience, skills ".
           // "INNER JOIN experience  USING (exp_id) ".
          //  "INNER JOIN skills USING (skill_id) ".
-           "WHERE mapping.user_id = '1' and mapping.exp_id = experience.exp_id AND mapping.skill_id = skills.skill_id ".
+           "WHERE mapping.user_id = '". $_SESSION['user_id'] ."' and mapping.exp_id = experience.exp_id AND mapping.skill_id = skills.skill_id ".
 		   "GROUP BY mapping.skill_id";
 
    $data = mysqli_query($dbc,$query);
@@ -43,11 +43,11 @@
    foreach ($xp as $xp_name => $val) {
        $sum_xp += $val;
    }
-$skill_level = floor(2+log(($sum_xp/100), 2));
+$skill_level = 2+log(($sum_xp/100), 2);
 
 /* ------- ПОЛУЧАЕМ ДАННЫЕ ДЛЯ ОТОБРАЖЕНИЯ ЗАДАНИЙ И РАСЧЕТА ВЫПОЛНЕННЫХ ЗАДАЧ -----*/
 
-    $query2 = "SELECT * FROM tasks WHERE user_id='1' ORDER BY task_status AND task_date DESC ";
+    $query2 = "SELECT * FROM tasks WHERE user_id='". $_SESSION['user_id'] ."' ORDER BY task_status AND task_date DESC ";
     $data2 = mysqli_query($dbc, $query2);
     $num_task = mysqli_num_rows($data2);
 
@@ -73,22 +73,23 @@ while ($row2 = mysqli_fetch_array($data2)) {
     </ul>-->
 
     <div class="content container-fluid">
-        <div class="col-md-4">
-            <div class="user">
-                <p class="nickname"><?php echo $_SESSION['email'];?> </p>
-                <p class="user-skill-number"><?php echo "your level is ". $skill_level; ?></p>
-                <!--<img class="user-skill-number" src="img/level.jpg">-->
-            </div>
+        <div class=" col-md-4">
+            <p class="nickname"><?php echo $_SESSION['email'];?> </p>
+            <!--<div class="user">-->
+                <!--<img class="user-skill-number" src="img/avatar.jpg">-->
+                <img class="user" src="img/avatar.jpg">
+            <!--</div>-->
+            <p class="user-skill-number"><?php echo "your level is ". floor ($skill_level); ?></p>
+            <?php  echo "<div id='progressbar' class='ui-progressbar'>".$k = ($skill_level - floor($skill_level))*100 ."</div>"; ?>
             <div class="user-progress">
-                <p>Набрано опыта <span class="badge pull-right"><?php echo $sum_xp; ?></span></p>
-                <p>Выполнено задач <span class="badge pull-right"><?php echo $num_task_completed; ?></span></p>
-                <p>Потрачено времени, ч <span class="badge pull-right">25</span></p>
+                <p>Набрано опыта <span class="pull-right"><?php echo $sum_xp; ?></span></p>
+                <p>Выполнено задач <span class=" pull-right"><?php echo $num_task_completed; ?></span></p>
             </div>
 
         </div>
 
         <div class="col-md-8"> <!-- RIGHT SIDE -->
-
+            <h2>Ваши навыки:</h2>
             <div class="slider center">
                <?php echo $img; ?>
             </div>
@@ -100,7 +101,7 @@ while ($row2 = mysqli_fetch_array($data2)) {
             <?php echo $taskToShow; ?>
         </div>
         </div> <!-- END OF RIGHT SIDE -->
-        <div class="col-md-10"><img src="img/ornament.png"></div>
+       <!-- <div class="col-md-10"><img src="img/ornament.png"></div>-->
     </div> <!-- END OF WHITE CONTAINER -->
 
 </div> <!--END OF CLASS=COnTAINER-->

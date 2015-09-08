@@ -8,13 +8,20 @@
 ?>
 
 
-<!--<div class="footer">
-  <div class="container">-->
+<div class="footer">
+  <div class="container">
       <div class="pull-left">
           <p class="">2015 &copy All Rights Reserved</p>
       </div>
-<!--  </div>
-</div>-->
+  </div>
+</div>
+
+<script src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="slick/slick.js"></script>
+<script src="js/script.js"></script>
+
+
 
 </body>
 </html>

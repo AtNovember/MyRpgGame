@@ -1,5 +1,5 @@
 /*@import url(http://fonts.googleapis.com/css?family=Lora&subset=latin,cyrillic);*/
-@import url(http://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,cyrillic);*/
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,cyrillic);
 
 * {
     margin:0;
@@ -13,25 +13,36 @@ body, html {
    /* font-family: 'Lora', serif;*/
     font-family: 'EB Garamond', serif;
     font-size: large;
-
+    margin: 0;
+    display: table;
+    height: 100%;
+    width: 100%;
 }
 
+
+.container {
+    /*padding: 2em;*/
+    height: auto;
+}
+
+
+
+
+
+
 body {
-    background-image: url("../img/bg.jpg");
+    background-image: url("../img/bg2.jpg");
+    background-color: #060200;
     background-repeat: no-repeat;
     background-size: cover;
     font-weight: bold;
 }
 
-.content {
-    /*border: solid;*/
-    border-color: rgba(200, 102, 052, 0.9);
-}
-
 /*---HEADER---*/
 
+/*
 .page-header {
-    background-color: rgba(255,255,255, 0.3);
+   background-color: rgba(255,255,255, 0.3);
 }
 
 .page-header > h2 {
@@ -48,7 +59,7 @@ body {
     content: url("../img/ornament-right.png");
     width:200px;
 }
-
+*/
 
 /* ---- content tabs ------*/
 
@@ -64,47 +75,53 @@ ul.nav-tabs {
 
 /* ---MAIN CONTENT---*/
 .content {
-    background-color: rgba(255,255,255, 0.2);
+    background-color: rgba(15,15,15, 0.7);
     border-radius: 5px;
-    border-color: rgba(0,0,0, 1);
+    border-color: rgba(255,255,255, 0.38);
+    border-style: double;
+    color: #bcbcbc;
+    margin-bottom: 3em;
 }
 
 .col-md-4 {
-    padding-left: 3%;
+    padding-left: 4%;
 }
 
 .user, .skill {
     background-image: url("../img/avatar.jpg");
-    background-size: contain;
-  /*  background-repeat: no-repeat;*/
-    height: 385px;
-    width: 260px;
-    margin-top: 8%;
-    margin-bottom: 4%;
-    position:relative;
+    /*background-size: contain;*/
+   background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+   /* position:relative;*/
 }
 
 p.nickname, p.skill-name {
-    z-index: 1;
-    position: relative;
-    /*color: #33000;*/
+    /*z-index: 1;*/
+    /*position: relative;*/
+    color: #ddd;
     font-weight: 700;
-    font-size: 1.8em;
+    font-size: 1.5em;
     text-align: center;
     padding-top: 0.2em;
 
 }
 
 .user-skill-number {
-   position: absolute;
+   /*position: absolute;*/
     /*margin-top: 100px;*/
-    bottom: 3em;
-    left: 2em;
+    /*bottom: 3em;
+    left: 2em;*/
+    text-align: center;
+    font-size: 1.3em;
 }
 
 div.user-progress > p{
     list-style-type: none;
-    width: 260px;
+    width: 100%;
+    font-size: large;
 }
 
 .user-skills {
@@ -127,6 +144,20 @@ div.user-progress > p{
 .col-md-10 {
     margin-left: 20%;
 }
+
+/* ------ SKILL BARS ------*/
+
+.ui-progressbar {
+  position: relative;
+}
+.progress-label {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #fff;
+}
+
 
 /*------ task page ------*/
 
@@ -188,13 +219,15 @@ div.user-progress > p{
 /* ----- registration form ---*/
 
 .form-group {
-    background-color: rgba(255,255,255, 0.3);
+    background-color: rgba(15,15,15, 0.4);
     width: 20em;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
     padding: 1.2em;
     border-radius: 5%;
+    border-color: rgba(255,255,255, 0.6);
+
 }
 
 .form-group > form {
@@ -229,62 +262,22 @@ div.user-progress > p{
 
 
 
-
 /* Дальше пошли мои извращения с прокруткой картинок скиллов */
 
 .user-skills {
     display: inline-block;
 }
-/*
-.thumb {
-    position:relative;
-    background: url("http://upload.wikimedia.org/wikipedia/commons/6/68/Solid_black.png");
-   height: 180px;
-    width: 120px;
-    float: left;
-    overflow: hidden;
-    border: 1px solid #eee;*/
-    /*box-shadow: 0 5px 10px;*/
-  /*  margin: 12px;
-    display:none;
-}*/
-/*
-.thumb > .content {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin: 30px;
-    color: #EEEEEE;
-}
 
-.thumb > .content > h2 {
-    text-transform: uppercase;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #eee;
-}
-
-
-.thumb > .content > p {
-    text-align: center;
-}
-
-.wrapper {
-    position:absolute;
-    top: 0px;
-    left: 0px;
-    height: 190px;
-    width: 190px;
-}
-
-.wrapper img {
-    height: 190px;
-    width: 190px;
-}*/
 
 .col-md-8{
-    padding-top: 2em;
-    padding-right: 5em;
+    padding-top: 1em;
+    padding-right: 4em;
+    padding-left: 4em;
+}
+
+.col-md-8 > h2 {
+    font-size: 2em;
+    text-align: center;
 }
 
 .slick-slide > img {
@@ -310,12 +303,91 @@ div.user-progress > p{
 
 /*--- FOOOTER---*/
 
+
+
 .footer {
-   /* padding-bottom: 2.6em;*/
-   // position: relative;
-    background-color: rgba(255, 255, 255, 0.2);
+    display: table-row;
+    height: 1px;
+    background-color: rgba(10, 10, 10, 0.5);
+    color: #dddddd;
+    width:100%
+}
+
+body> .container:after {
+    content: '';
+    width:100%;
+    height: 3px;
+    border-bottom: solid rgba(200, 200, 200, 0.9) 1px;
+}
+
+.footer> .container {
+    margin: 1em auto;
+
 }
 
 .footer > .container > ul.nav {
     margin-left: 20%;
+}
+
+@media screen and (max-width:768px) /* landscape or square */  {
+
+    .container, .container-fluid {
+        width: 98%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+
+    .content {
+        background-color: rgba(15,15,15, 0.7);
+        border-radius: 0px;
+        border-color: rgba(255,255,255, 0.38);
+        border-style: double;
+        color: #bcbcbc;
+    }
+
+    .col-md-4 {
+        padding-left: 1%;
+    }
+
+    p.nickname, p.skill-name {
+        /*z-index: 1;*/
+        /*position: relative;*/
+        color: #ddd;
+        font-weight: 700;
+        font-size: 2.5em;
+        text-align: center;
+        padding-top: 0.2em;
+    }
+
+    .user, .skill {
+        background-image: url("../img/avatar.jpg");
+        background-repeat: no-repeat;
+        height: 7em;
+        width: 5em;
+        float: left;
+        margin-right: 2em;
+    }
+
+
+    div.user-progress > p {
+        font-size: 2.1em;
+        width: 100%;
+    }
+
+    div.user-progress > p > span.pull-right {
+        margin-right: 0;
+    }
+
+    .col-md-8 > h2 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+
+    .col-md-8{
+        padding-top: 1em;
+        padding-right: 2em;
+        padding-left: 0em;
+    }
+
 }
